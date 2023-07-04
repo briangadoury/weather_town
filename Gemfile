@@ -14,8 +14,13 @@ gem 'sass-rails', '>= 6'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'faraday'
+gem 'faraday-retry'
+
 group :development, :test do
   gem 'pry-rails'
+  gem 'pry-byebug'
   gem 'rspec-rails', '~> 6.0.0'
 end
 
