@@ -15,8 +15,6 @@ class WeatherReporterService
   end
 
   def call
-    # TODO: support multiple providers
-    # TODO: api_key param. each provider asks a separate service for its API key. say why!
-    response = WeatherApi::Providers::WeatherApi.current(query: query)
+    WeatherApi::Providers::WeatherApi.current(query: query)
   end
 end

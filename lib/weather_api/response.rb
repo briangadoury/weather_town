@@ -11,8 +11,12 @@ class WeatherApi::Response
     api_response.success?
   end
 
-  def to_json
-    @to_json ||= weather_data.to_json
+  def error
+    api_response.body.to_s unless success?
+  end
+
+  def as_json
+    @as_json ||= weather_data.as_json
   end
 
   private
