@@ -1,0 +1,27 @@
+// Place all the styles related to the CurrentWeather controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+html, body { height: 100%; }
+
+.parent {
+/*  height: 200px; */
+  background: lightgrey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.child {
+  background-color: orange;
+  width: 600px;
+  text-align: center;
+}
+
+#logo {
+    height: 50%;
+    width: 50%;
+}
+
+ul#results {
+ list-style-type: none;
+}

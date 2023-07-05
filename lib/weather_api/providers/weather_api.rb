@@ -1,19 +1,18 @@
 require 'weather_api/providers'
 require 'weather_api/providers/base'
 
-# BTS: It's an awkward coincidence that this provider's business name matches our top level namespace
+# BTS: It's just an awkward coincidence that this provider's business name matches our top level namespace
 class WeatherApi::Providers::WeatherApi < WeatherApi::Providers::Base
 
   class << self
 
     def current(query:)
+      # TODO: This is probably generic enough to move to the superclass
       api_response = connection.get(
         endpoint_path, 
         request_params(query), 
         request_headers
       )
-      # puts api_response.body.pretty_inspect
-      # binding.pry
 
       WeatherApi::Response.new(
         weather_data: map_response_data(api_response.body),

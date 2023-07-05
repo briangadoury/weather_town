@@ -1,5 +1,4 @@
 require 'ostruct'
-require 'spec_helper'
 require 'rails_helper'
 require 'weather_api/providers/weather_api'
 
@@ -53,6 +52,7 @@ RSpec.describe WeatherApi::Providers::WeatherApi do
     let(:endpoint_base_url) { 'https://api.weatherapi.com' }
     let(:endpoint_path) { '/v1/current.json' }
     let(:api_key_identifier) { 'WEATHER_API_API_KEY' }
+    let(:query) { WeatherApi::Query.new(zipcode: zipcode) }
 
     let(:stubs) { Faraday::Adapter::Test::Stubs.new }
     let!(:conn) { Faraday.new { |b| b.adapter(:test, stubs) } }
@@ -84,7 +84,6 @@ RSpec.describe WeatherApi::Providers::WeatherApi do
                                          api_response: an_instance_of(Faraday::Response)
                                        ) { response_object }
 
-        query = WeatherApi::Query.new(zipcode: zipcode)
         result = described_class.current(query: query)
 
         # This will only pass if the SUT passed the correct params to the WeatherApi::Response 
@@ -110,7 +109,6 @@ RSpec.describe WeatherApi::Providers::WeatherApi do
           [403, {}, '<html>403 Forbidden</html>']
         end
 
-        query = WeatherApi::Query.new(zipcode: zipcode)
         expect { described_class.current(query: query) }.not_to raise_error
 
         stubs.verify_stubbed_calls

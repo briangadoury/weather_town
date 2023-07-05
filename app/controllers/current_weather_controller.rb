@@ -1,10 +1,10 @@
 class CurrentWeatherController < ApplicationController
+
   def fetch
     cache_hit = true
     error_details = nil
 
-    # TODO: Extract caching and cache_hit detection to WeatherReporterService
-    # TODO: Change expires_in to 30.minutes as per requirements
+    # TODO: Extract caching and cache_hit detection. Possibly into WeatherReporterService
     weather_data = Rails.cache.fetch(cache_key, skip_nil: true, expires_in: 5.seconds) do
       cache_hit = false
 
