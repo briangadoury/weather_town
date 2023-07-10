@@ -38,7 +38,7 @@ README for Brian Gadoury's <$firstname$lastname @ gmail.com> weather API demo Ra
 ## Tests
 * Run `rspec`
 
-## Usage:
+## Usage
 
 * Run `rails s`
 * Go to http://localhost:3000/

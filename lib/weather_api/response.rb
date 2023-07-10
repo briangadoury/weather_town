@@ -2,13 +2,11 @@ class WeatherApi::Response
 
   attr_reader :weather_data
 
+  delegate :success?, to: :api_response
+
   def initialize(weather_data:, api_response:)
     @weather_data = weather_data
     @api_response = api_response
-  end
-
-  def success?
-    api_response.success?
   end
 
   def error
